@@ -10,6 +10,7 @@ button.container{
     padding-left:1rem; 
     padding-right:  1rem;
     margin-bottom: 1rem;
+
 }
 
 button.container:hover{
@@ -19,6 +20,7 @@ button.container:hover{
 button.small{
     width: 7rem;
     height: 3rem;
+    
 }
 button.medium{
     width: 10rem;
@@ -36,13 +38,11 @@ button.danger{
 
 button.success{
     background-color:green;
-    
+    color: #fff
 }
 
 button.warning{
     background-color:yellow;
-   
-
 }
 
 button.casual{
@@ -50,12 +50,4 @@ button.casual{
     color: #fff
 }
 
-button.casual{
-    background-color:blue;
-    color: #fff
-}
 
-button svg {
- 
-    height:20px;
-}

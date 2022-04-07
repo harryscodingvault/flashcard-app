@@ -31,6 +31,7 @@ function Layout() {
             title="first card"
             text="this is a study card"
             type="study"
+            currentCard="1"
           />
           <CustomCard title="edit card" text="this is a card" type="edit" />
         </div>
