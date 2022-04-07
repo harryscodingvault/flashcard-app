@@ -9,6 +9,7 @@ button.container{
     justify-content: space-between;
     padding-left:1rem; 
     padding-right:  1rem;
+    margin-bottom: 1rem;
 }
 
 button.container:hover{
@@ -16,14 +17,14 @@ button.container:hover{
 }
 
 button.small{
-    width: 5rem;
+    width: 7rem;
     height: 3rem;
 }
 button.medium{
     width: 10rem;
     height: 3rem;
 }
-button.small{
+button.big{
     width: 20rem;
     height: 3rem;
 }
