@@ -4,6 +4,13 @@ header{
     background-color: #000;
     color: #fff;
     align-items: center;
-    justify-content: center;
+    padding-left:4rem;
+   
+}
+
+header h1{
+    border-bottom: 3px solid red;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 

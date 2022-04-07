@@ -1,0 +1,7 @@
+.main-app-container{
+    min-height: calc(100vh - 10rem - 2rem);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3rem;
+}

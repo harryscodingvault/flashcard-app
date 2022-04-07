@@ -1,0 +1,60 @@
+button.container{
+    font-size:1.2rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left:1rem; 
+    padding-right:  1rem;
+}
+
+button.container:hover{
+    background-color: grey;
+}
+
+button.small{
+    width: 5rem;
+    height: 3rem;
+}
+button.medium{
+    width: 10rem;
+    height: 3rem;
+}
+button.small{
+    width: 20rem;
+    height: 3rem;
+}
+
+button.danger{
+    background-color:red;
+    
+}
+
+button.success{
+    background-color:green;
+    
+}
+
+button.warning{
+    background-color:yellow;
+   
+
+}
+
+button.casual{
+    background-color:blue;
+    color: #fff
+}
+
+button.casual{
+    background-color:blue;
+    color: #fff
+}
+
+button svg {
+ 
+    height:20px;
+}
