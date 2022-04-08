@@ -7,6 +7,7 @@ import NotFound from "../components/NotFound/NotFound";
 import Footer from "../components/Footer/Footer";
 import CustomButton from "../components/CustomRecC/CustomButton/CustomButton";
 import CustomCard from "../components/CustomRecC/CustomCard/CustomCard";
+import CustomForm from "../components/CustomRecC/CustomForm/CustomForm";
 
 function Layout() {
   return (
@@ -16,8 +17,8 @@ function Layout() {
         {/* TODO: Implement the screen starting here */}
         <CustomButton
           title="Create deck"
-          type="casual"
-          size="medium"
+          kind="casual"
+          size="big"
           purpose="add"
         />
         <div>
@@ -35,7 +36,10 @@ function Layout() {
           />
           <CustomCard title="edit card" text="this is a card" type="edit" />
         </div>
-
+        <div>
+          <CustomForm title="Create Deck" type="deck" />
+          <CustomForm title="Add Card" type="card" />
+        </div>
         <NotFound />
       </div>
       <Footer />

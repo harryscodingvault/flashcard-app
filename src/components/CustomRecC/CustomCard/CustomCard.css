@@ -2,10 +2,11 @@
     display: flex;
     flex-direction: column;
     width: 30rem;
-    height: 10rem;
+    height: 15rem;
     margin-bottom: 1rem;
     color: #fff;
     background-color: #000;
+    border: 3px solid #000;
 }
 
 .card-text-container{
@@ -18,6 +19,10 @@
     display: flex; 
     flex-direction: row;
     justify-content: space-between;
+}
+
+.card-text-container p{
+    font-size: 1.3rem;
 }
 
 .card-button-container{

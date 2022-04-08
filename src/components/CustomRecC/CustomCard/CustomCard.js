@@ -28,13 +28,13 @@ const CustomCard = ({
           <div className="card-button-group-1">
             <CustomButton
               title="View"
-              type="warning"
+              kind="warning"
               size="small"
               purpose="view"
             />
             <CustomButton
               title="Study"
-              type="casual"
+              kind="casual"
               size="small"
               purpose="study"
             />
@@ -42,7 +42,7 @@ const CustomCard = ({
           <div className="card-button-group-2">
             <CustomButton
               title="Delete"
-              type="danger"
+              kind="danger"
               size="small"
               purpose="delete"
             />
@@ -66,11 +66,16 @@ const CustomCard = ({
           <div className="card-button-group-1">
             <CustomButton
               title="Flip"
-              type="casual"
+              kind="casual"
               size="small"
               purpose="flip"
             />
-            <CustomButton title="next" type="success" size="small" />
+            <CustomButton
+              title="next"
+              kind="success"
+              size="small"
+              purpose="next"
+            />
           </div>
         </div>
       </>
@@ -88,7 +93,7 @@ const CustomCard = ({
           <div className="card-button-group-1">
             <CustomButton
               title="Edit"
-              type="warning"
+              kind="warning"
               size="small"
               purpose="edit"
             />
@@ -96,7 +101,7 @@ const CustomCard = ({
           <div className="card-button-group-2">
             <CustomButton
               title="Delete"
-              type="danger"
+              kind="danger"
               size="small"
               purpose="delete"
             />

@@ -1,0 +1,43 @@
+.custom-form-container{
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #000;
+    width: 30rem;
+    height: 30rem;
+    margin-bottom: 1rem;
+    
+}
+
+.custom-form-container h1{
+    padding-left: 1rem;
+    padding-top:  1rem;
+}
+
+.custom-form-container h1{
+    padding-left: 1rem;
+    padding-top:  1rem;
+}
+
+.custom-form-container label, .custom-form-container input, .custom-form-container textarea{
+    font-size: 1.3rem;
+}
+.custom-form-container input, .custom-form-container textarea{
+    font-size: 1.3rem;
+
+}
+
+.form-button-group{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.custom-form-container form{
+    display: flex;
+    flex: 5;
+    flex-direction: column;
+    padding-right: 1rem;
+    padding-left:  1rem;
+}
