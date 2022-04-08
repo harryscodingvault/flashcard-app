@@ -9,8 +9,18 @@ header{
 }
 
 header h1{
-    border-bottom: 3px solid red;
+    border-bottom: 3px solid var(--b_color);
     margin-bottom: 10px;
     padding-bottom: 10px;
+    --b_color:red;
 }
 
+
+header a {
+    text-decoration: none;
+    color: #fff;
+}
+
+header a:hover {
+    color: red;
+}

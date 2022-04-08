@@ -38,6 +38,9 @@ const CustomButton = ({
       deleteDeck(id);
       refreshHandler();
     },
+    studyDeckHandler: () => {
+      history.push(`/decks/${id}/study`);
+    },
   };
 
   return (

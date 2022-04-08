@@ -33,10 +33,12 @@ const CustomCard = ({
               purpose="view"
             />
             <CustomButton
+              id={id}
               title="Study"
               kind="casual"
               size="small"
               purpose="study"
+              onClickHandler="studyDeckHandler"
             />
           </div>
           <div className="card-button-group-2">
