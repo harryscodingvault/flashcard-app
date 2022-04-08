@@ -13,6 +13,7 @@ import { listDecks } from "../utils/api";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -22,6 +23,7 @@ function Layout() {
         const response = await listDecks();
         console.log("decks", response);
         setDecks(response);
+        setRefresh(false);
       } catch (err) {
         throw err;
       }
@@ -29,17 +31,24 @@ function Layout() {
     getDeck();
 
     return () => abortController.abort();
-  }, []);
+  }, [refresh]);
+
+  const refreshHandler = () => {
+    setRefresh(true);
+    console.log("refresh");
+  };
 
   const renderDecks = decks.map((item) => {
     const { id, cards, description, name } = item;
     return (
       <CustomCard
         key={id}
+        id={id}
         text_1={name}
         text_2={description}
         type="deck"
         quantity={cards.length}
+        refreshHandler={refreshHandler}
       />
     );
   });

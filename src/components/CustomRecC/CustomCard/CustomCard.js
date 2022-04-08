@@ -3,7 +3,15 @@ import "./CustomCard.css";
 
 import CustomButton from "../CustomButton/CustomButton";
 
-const CustomCard = ({ text_1, text_2, type, quantity, currentCard }) => {
+const CustomCard = ({
+  id,
+  text_1,
+  text_2,
+  type,
+  quantity,
+  currentCard,
+  refreshHandler,
+}) => {
   const selectType = {
     deck: (
       <>
@@ -33,10 +41,13 @@ const CustomCard = ({ text_1, text_2, type, quantity, currentCard }) => {
           </div>
           <div className="card-button-group-2">
             <CustomButton
+              id={id}
               title="Delete"
               kind="danger"
               size="small"
               purpose="delete"
+              onClickHandler="deleteDeckHandler"
+              refreshHandler={refreshHandler}
             />
           </div>
         </div>

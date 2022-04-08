@@ -6,8 +6,21 @@ import { MdFlipCameraAndroid, MdOutlineNextPlan } from "react-icons/md";
 import { ImEye, ImCancelCircle } from "react-icons/im";
 import { GrEdit } from "react-icons/gr";
 import { BiBookBookmark } from "react-icons/bi";
+import { useHistory } from "react-router-dom";
 
-const CustomButton = ({ title, kind, size, purpose }) => {
+import { deleteDeck, listDecks } from "../../../utils/api/index";
+
+const CustomButton = ({
+  id,
+  title,
+  kind,
+  size,
+  purpose,
+  onClickHandler,
+  refreshHandler,
+}) => {
+  const history = useHistory();
+
   const icons = {
     add: <FaRegPlusSquare />,
     delete: <RiDeleteBin2Line />,
@@ -19,8 +32,19 @@ const CustomButton = ({ title, kind, size, purpose }) => {
     cancel: <ImCancelCircle />,
   };
 
+  const handlers = {
+    deleteDeckHandler: () => {
+      window.confirm("Are you sure you want to delete this deck?");
+      deleteDeck(id);
+      refreshHandler();
+    },
+  };
+
   return (
-    <button className={`container ${kind} ${size}`}>
+    <button
+      className={`container ${kind} ${size}`}
+      onClick={handlers[onClickHandler]}
+    >
       {icons[purpose]}
       {title}
     </button>
