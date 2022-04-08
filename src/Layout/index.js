@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import "./Layout.css";
+import axios from "axios";
 
 import Header from "../components/Header/Header";
 import NotFound from "../components/NotFound/NotFound";
@@ -8,8 +9,41 @@ import Footer from "../components/Footer/Footer";
 import CustomButton from "../components/CustomRecC/CustomButton/CustomButton";
 import CustomCard from "../components/CustomRecC/CustomCard/CustomCard";
 import CustomForm from "../components/CustomRecC/CustomForm/CustomForm";
+import { listDecks } from "../utils/api";
 
 function Layout() {
+  const [decks, setDecks] = useState([]);
+
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    const getDeck = async () => {
+      try {
+        const response = await listDecks();
+        console.log("decks", response);
+        setDecks(response);
+      } catch (err) {
+        throw err;
+      }
+    };
+    getDeck();
+
+    return () => abortController.abort();
+  }, []);
+
+  const renderDecks = decks.map((item) => {
+    const { id, cards, description, name } = item;
+    return (
+      <CustomCard
+        key={id}
+        text_1={name}
+        text_2={description}
+        type="deck"
+        quantity={cards.length}
+      />
+    );
+  });
+
   return (
     <>
       <Header />
@@ -21,26 +55,8 @@ function Layout() {
           size="big"
           purpose="add"
         />
-        <div>
-          <CustomCard
-            title="first deck"
-            text="this is a deck"
-            type="deck"
-            quantity="5"
-          />
-          <CustomCard
-            title="first card"
-            text="this is a study card"
-            type="study"
-            currentCard="1"
-          />
-          <CustomCard title="edit card" text="this is a card" type="edit" />
-        </div>
-        <div>
-          <CustomForm title="Create Deck" type="deck" />
-          <CustomForm title="Add Card" type="card" />
-        </div>
-        <NotFound />
+        {renderDecks}
+        {!decks.length && <NotFound />}
       </div>
       <Footer />
     </>

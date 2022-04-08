@@ -3,26 +3,18 @@ import "./CustomCard.css";
 
 import CustomButton from "../CustomButton/CustomButton";
 
-const CustomCard = ({
-  title,
-  text,
-  type,
-  quantity,
-  currentCard,
-  question,
-  answer,
-}) => {
+const CustomCard = ({ text_1, text_2, type, quantity, currentCard }) => {
   const selectType = {
     deck: (
       <>
         <div className="card-text-container">
           <div className="card-top-text-group">
-            <h2>{title}</h2>
+            <h2>{text_1}</h2>
             <p>
               {quantity} {quantity > 1 ? "cards" : "card"}
             </p>
           </div>
-          <p>{text}</p>
+          <p>{text_2}</p>
         </div>
         <div className="card-button-container">
           <div className="card-button-group-1">
@@ -60,7 +52,7 @@ const CustomCard = ({
                 : "Only card"}
             </h2>
           </div>
-          <p>{text}</p>
+          <p>{text_2}</p>
         </div>
         <div className="card-button-container">
           <div className="card-button-group-1">
@@ -82,11 +74,10 @@ const CustomCard = ({
     ),
     edit: (
       <>
-        {" "}
         <div className="card-text-container">
           <div className="card-top-text-group">
-            <p>{question}</p>
-            <p>{answer}</p>
+            <p>{text_1}</p>
+            <p>{text_2}</p>
           </div>
         </div>
         <div className="card-button-container">
