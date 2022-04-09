@@ -4,6 +4,7 @@ import "./StudyDeck.css";
 
 import CustomCard from "../../components/CustomRecC/CustomCard/CustomCard";
 import { readDeck } from "../../utils/api/index";
+import CustomButton from "../../components/CustomRecC/CustomButton/CustomButton";
 
 const StudyDeck = () => {
   const { deckId } = useParams();
@@ -67,9 +68,29 @@ const StudyDeck = () => {
       </>
     ),
     loading: <h1 className="deck-title">Loading...</h1>,
+    notEnoughCards: (
+      <div className="add-cards-container">
+        <h1 className="deck-title">Study: {deck.name}</h1>
+        <h2>Not enough cards</h2>
+        <p>
+          You need at least 3 cards to study. There are {deck?.cards?.length}{" "}
+          cards in this deck
+        </p>
+        <CustomButton
+          title="Add Cards"
+          kind="casual"
+          size="medium"
+          purpose="add"
+        />
+      </div>
+    ),
   };
 
-  return deck ? deckDisplay.render : deckDisplay.loading;
+  return deck.cards
+    ? deck.cards.length > 2
+      ? deckDisplay.render
+      : deckDisplay.notEnoughCards
+    : deckDisplay.loading;
 };
 
 export default StudyDeck;

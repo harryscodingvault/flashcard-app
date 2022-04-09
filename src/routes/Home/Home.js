@@ -53,6 +53,7 @@ const Home = () => {
         kind="casual"
         size="big"
         purpose="add"
+        onClickHandler="createDeckHandler"
       />
       {renderDecks}
       {!decks.length && <NotFound />}

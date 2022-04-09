@@ -20,6 +20,7 @@ const CustomButton = ({
   refreshHandler,
   changeCardPositionHandler,
   nextCardHandler,
+  type,
 }) => {
   const history = useHistory();
 
@@ -49,12 +50,19 @@ const CustomButton = ({
     nextCardHandler: () => {
       nextCardHandler();
     },
+    createDeckHandler: () => {
+      history.push(`/decks/new`);
+    },
+    cancelFormHandler: () => {
+      history.push(`/`);
+    },
   };
 
   return (
     <button
       className={`container ${kind} ${size}`}
       onClick={handlers[onClickHandler]}
+      type={type}
     >
       {icons[purpose]}
       {title}
