@@ -8,7 +8,7 @@ import { GrEdit } from "react-icons/gr";
 import { BiBookBookmark } from "react-icons/bi";
 import { useHistory } from "react-router-dom";
 
-import { deleteDeck, listDecks } from "../../../utils/api/index";
+import { deleteDeck } from "../../../utils/api/index";
 
 const CustomButton = ({
   id,
@@ -18,6 +18,8 @@ const CustomButton = ({
   purpose,
   onClickHandler,
   refreshHandler,
+  changeCardPositionHandler,
+  nextCardHandler,
 }) => {
   const history = useHistory();
 
@@ -40,6 +42,12 @@ const CustomButton = ({
     },
     studyDeckHandler: () => {
       history.push(`/decks/${id}/study`);
+    },
+    flipCardHandler: () => {
+      changeCardPositionHandler();
+    },
+    nextCardHandler: () => {
+      nextCardHandler();
     },
   };
 

@@ -11,6 +11,10 @@ const CustomCard = ({
   quantity,
   currentCard,
   refreshHandler,
+  allowNewCard,
+  changeCardPositionHandler,
+  currentPosition,
+  nextCardHandler,
 }) => {
   const selectType = {
     deck: (
@@ -64,6 +68,7 @@ const CustomCard = ({
                 ? `Card ${currentCard}  of ${quantity}`
                 : "Only card"}
             </h2>
+            {currentPosition ? <h3>Front</h3> : <h3>Back</h3>}
           </div>
           <p>{text_2}</p>
         </div>
@@ -74,13 +79,19 @@ const CustomCard = ({
               kind="casual"
               size="small"
               purpose="flip"
+              onClickHandler="flipCardHandler"
+              changeCardPositionHandler={changeCardPositionHandler}
             />
-            <CustomButton
-              title="next"
-              kind="success"
-              size="small"
-              purpose="next"
-            />
+            {allowNewCard && (
+              <CustomButton
+                title="next"
+                kind="success"
+                size="small"
+                purpose="next"
+                onClickHandler="nextCardHandler"
+                nextCardHandler={nextCardHandler}
+              />
+            )}
           </div>
         </div>
       </>

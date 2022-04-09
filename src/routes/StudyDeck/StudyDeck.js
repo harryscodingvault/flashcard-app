@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import "./StudyDeck.css";
 
 import CustomCard from "../../components/CustomRecC/CustomCard/CustomCard";
 import { readDeck } from "../../utils/api/index";
 
 const StudyDeck = () => {
   const { deckId } = useParams();
-  const [deck, setDeck] = useState([]);
+  const [deck, setDeck] = useState({});
+  const [allCards, setAllCards] = useState([]);
+  const [currentCard, setCurrentCard] = useState({});
+  const [currentPosition, setCurrentPosition] = useState(true);
+  const [allowNewCard, setAllowNewCard] = useState(false);
+
+  const history = useHistory();
 
   useEffect(() => {
     const getDeck = async () => {
       try {
         const response = await readDeck(deckId);
-        console.log("dec", response);
         setDeck(response);
+        setAllCards(response.cards);
+        setCurrentCard(response.cards[0]);
       } catch (err) {
         throw err;
       }
@@ -21,17 +29,47 @@ const StudyDeck = () => {
     getDeck();
   }, []);
 
-  return (
-    <>
-      <h1 className="deck-title">Study: {deck.name}</h1>
-      <CustomCard
-        id={deckId}
-        type="study"
-        text_2={deck.description}
-        quantity={deck.cards.length}
-      />
-    </>
-  );
+  const changeCardPositionHandler = () => {
+    setCurrentPosition(!currentPosition);
+    setAllowNewCard(true);
+    console.log(allowNewCard);
+  };
+
+  const nextCardHandler = () => {
+    let currentCardIndex = allCards.indexOf(currentCard);
+    if (currentCardIndex === allCards.length - 1) {
+      if (window.confirm("Restart cards?")) {
+        currentCardIndex = -1;
+      } else {
+        history.push("/");
+      }
+    }
+    setCurrentCard(allCards[currentCardIndex + 1]);
+    console.log(allCards);
+    console.log("currentCard", currentCard);
+  };
+
+  const deckDisplay = {
+    render: (
+      <>
+        <h1 className="deck-title">Study: {deck.name}</h1>
+        <CustomCard
+          id={deckId}
+          type="study"
+          text_2={currentPosition ? currentCard?.front : currentCard?.back}
+          quantity={deck?.cards?.length}
+          allowNewCard={allowNewCard}
+          currentCard={allCards.indexOf(currentCard) + 1}
+          changeCardPositionHandler={changeCardPositionHandler}
+          currentPosition={currentPosition}
+          nextCardHandler={nextCardHandler}
+        />
+      </>
+    ),
+    loading: <h1 className="deck-title">Loading...</h1>,
+  };
+
+  return deck ? deckDisplay.render : deckDisplay.loading;
 };
 
 export default StudyDeck;
