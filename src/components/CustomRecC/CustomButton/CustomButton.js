@@ -8,7 +8,7 @@ import { GrEdit } from "react-icons/gr";
 import { BiBookBookmark } from "react-icons/bi";
 import { useHistory } from "react-router-dom";
 
-import { deleteDeck } from "../../../utils/api/index";
+import { deleteDeck, deleteCard } from "../../../utils/api/index";
 
 const CustomButton = ({
   id,
@@ -39,7 +39,7 @@ const CustomButton = ({
     deleteDeckHandler: () => {
       window.confirm("Are you sure you want to delete this deck?");
       deleteDeck(id);
-      refreshHandler();
+      refreshHandler ? refreshHandler() : history.push(`/`);
     },
     studyDeckHandler: () => {
       history.push(`/decks/${id}/study`);
@@ -55,6 +55,20 @@ const CustomButton = ({
     },
     cancelFormHandler: () => {
       history.push(`/`);
+    },
+    viewDeckHandler: () => {
+      history.push(`/decks/${id}`);
+    },
+    editDeckHandler: () => {
+      history.push(`/decks/${id}/edit`);
+    },
+    addCardsHandler: () => {
+      history.push(`/decks/${id}/cards/new`);
+    },
+    deleteCardHandler: () => {
+      window.confirm("Delete this card?\n\nYou will not be able to recover it");
+      deleteCard(id);
+      refreshHandler();
     },
   };
 

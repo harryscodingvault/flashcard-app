@@ -9,6 +9,7 @@ import Home from "../routes/Home/Home";
 import EditDeck from "../routes/EditDeck/EditDeck";
 import StudyDeck from "../routes/StudyDeck/StudyDeck";
 import CreateDeck from "../routes/CreateDeck/CreateDeck";
+import ViewDeck from "../routes/ViewDeck/ViewDeck";
 
 function Layout() {
   return (
@@ -24,6 +25,9 @@ function Layout() {
           </Route>
           <Route exact path="/decks/new">
             <CreateDeck />
+          </Route>
+          <Route exact path="/decks/:deckId">
+            <ViewDeck />
           </Route>
         </Switch>
       </div>

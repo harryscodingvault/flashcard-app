@@ -15,6 +15,7 @@ const CustomCard = ({
   changeCardPositionHandler,
   currentPosition,
   nextCardHandler,
+  editDeck,
 }) => {
   const selectType = {
     deck: (
@@ -30,12 +31,25 @@ const CustomCard = ({
         </div>
         <div className="card-button-container">
           <div className="card-button-group-1">
-            <CustomButton
-              title="View"
-              kind="warning"
-              size="small"
-              purpose="view"
-            />
+            {editDeck ? (
+              <CustomButton
+                id={id}
+                title="Edit"
+                kind="warning"
+                size="small"
+                purpose="edit"
+                onClickHandler="editDeckHandler"
+              />
+            ) : (
+              <CustomButton
+                id={id}
+                title="View"
+                kind="warning"
+                size="small"
+                purpose="view"
+                onClickHandler="viewDeckHandler"
+              />
+            )}
             <CustomButton
               id={id}
               title="Study"
@@ -46,6 +60,16 @@ const CustomCard = ({
             />
           </div>
           <div className="card-button-group-2">
+            {editDeck && (
+              <CustomButton
+                id={id}
+                title="Add Cards"
+                kind="casual"
+                size="small"
+                purpose="add"
+                onClickHandler="addCardsHandler"
+              />
+            )}
             <CustomButton
               id={id}
               title="Delete"
@@ -107,18 +131,23 @@ const CustomCard = ({
         <div className="card-button-container">
           <div className="card-button-group-1">
             <CustomButton
+              id={id}
               title="Edit"
               kind="warning"
               size="small"
               purpose="edit"
+              onClickHandler="editCardHandler"
             />
           </div>
           <div className="card-button-group-2">
             <CustomButton
+              id={id}
               title="Delete"
               kind="danger"
               size="small"
               purpose="delete"
+              onClickHandler="deleteCardHandler"
+              refreshHandler={refreshHandler}
             />
           </div>
         </div>
