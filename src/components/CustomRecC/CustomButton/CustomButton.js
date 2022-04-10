@@ -6,7 +6,7 @@ import { MdFlipCameraAndroid, MdOutlineNextPlan } from "react-icons/md";
 import { ImEye, ImCancelCircle } from "react-icons/im";
 import { GrEdit } from "react-icons/gr";
 import { BiBookBookmark } from "react-icons/bi";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import { deleteDeck, deleteCard } from "../../../utils/api/index";
 
@@ -23,6 +23,7 @@ const CustomButton = ({
   type,
 }) => {
   const history = useHistory();
+  const { deckId } = useParams();
 
   const icons = {
     add: <FaRegPlusSquare />,
@@ -69,6 +70,9 @@ const CustomButton = ({
       window.confirm("Delete this card?\n\nYou will not be able to recover it");
       deleteCard(id);
       refreshHandler();
+    },
+    editCardHandler: () => {
+      history.push(`/decks/${deckId}/cards/${id}/edit`);
     },
   };
 

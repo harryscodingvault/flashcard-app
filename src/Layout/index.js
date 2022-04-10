@@ -11,6 +11,7 @@ import StudyDeck from "../routes/StudyDeck/StudyDeck";
 import CreateDeck from "../routes/CreateDeck/CreateDeck";
 import ViewDeck from "../routes/ViewDeck/ViewDeck";
 import AddCard from "../routes/AddCard/AddCard";
+import EditCard from "../routes/EditCard/EditCard";
 
 function Layout() {
   return (
@@ -35,6 +36,9 @@ function Layout() {
           </Route>
           <Route exact path="/decks/:deckId/cards/new">
             <AddCard />
+          </Route>
+          <Route exact path="/decks/:deckId/cards/:cardId/edit">
+            <EditCard />
           </Route>
         </Switch>
       </div>
