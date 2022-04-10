@@ -4,10 +4,10 @@ import { useHistory } from "react-router-dom";
 
 import CustomButton from "../CustomButton/CustomButton";
 
-const CustomForm = ({ type, title, text_1, text_2, submitFormHandler }) => {
+const CustomForm = ({ type, title, input_1, input_2, submitFormHandler }) => {
   const initialFormState = {
-    text_1: "",
-    text_2: "",
+    text_1: input_1 ? input_1 : "",
+    text_2: input_2 ? input_2 : "",
   };
   const [formData, setFormData] = useState({ ...initialFormState });
 

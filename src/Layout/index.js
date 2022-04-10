@@ -29,6 +29,9 @@ function Layout() {
           <Route exact path="/decks/:deckId">
             <ViewDeck />
           </Route>
+          <Route exact path="/decks/:deckId/edit">
+            <EditDeck />
+          </Route>
         </Switch>
       </div>
       <Footer />

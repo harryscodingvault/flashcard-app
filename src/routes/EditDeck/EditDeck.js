@@ -1,17 +1,46 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom";
 import "./EditDeck.css";
 
-import CustomButton from "../../components/CustomRecC/CustomButton/CustomButton";
-import NotFound from "../../components/NotFound/NotFound";
-import CustomCard from "../../components/CustomRecC/CustomCard/CustomCard";
-import { listDecks } from "../../utils/api/index";
+import CustomForm from "../../components/CustomRecC/CustomForm/CustomForm";
+
+import { readDeck, updateDeck } from "../../utils/api/index";
 
 const EditDeck = () => {
   const { deckId } = useParams();
-  console.log("deckId", deckId);
+  const history = useHistory();
+  const [deck, setDeck] = useState({});
 
-  return <CustomCard />;
+  useEffect(() => {
+    const getDeck = async () => {
+      try {
+        const response = await readDeck(deckId);
+        setDeck(response);
+      } catch (err) {
+        throw err;
+      }
+    };
+    getDeck();
+  }, []);
+
+  const submitFormHandler = (form) => {
+    updateDeck({ id: deck.id, name: form.text_1, description: form.text_2 });
+    history.goBack();
+  };
+  const renderDeckState = {
+    render: (
+      <CustomForm
+        type="deck"
+        title="Edit Deck:"
+        input_1={deck.name}
+        input_2={deck.description}
+        submitFormHandler={submitFormHandler}
+      />
+    ),
+    loading: <h1>Loading...</h1>,
+  };
+
+  return deck.name ? renderDeckState.render : renderDeckState.loading;
 };
 
 export default EditDeck;

@@ -54,7 +54,7 @@ const CustomButton = ({
       history.push(`/decks/new`);
     },
     cancelFormHandler: () => {
-      history.push(`/`);
+      history.goBack();
     },
     viewDeckHandler: () => {
       history.push(`/decks/${id}`);
