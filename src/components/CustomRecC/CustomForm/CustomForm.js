@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./CustomForm.css";
-import { useHistory } from "react-router-dom";
 
 import CustomButton from "../CustomButton/CustomButton";
 
@@ -85,6 +84,7 @@ const CustomForm = ({ type, title, input_1, input_2, submitFormHandler }) => {
             size="small"
             kind="danger"
             purpose="cancel"
+            onClickHandler="cancelFormHandler"
           />
           <CustomButton
             title="Save"
@@ -100,7 +100,7 @@ const CustomForm = ({ type, title, input_1, input_2, submitFormHandler }) => {
 
   return (
     <div className="custom-form-container">
-      <h1>{title}</h1>
+      <h2>{title}</h2>
       {formType[type]}
     </div>
   );

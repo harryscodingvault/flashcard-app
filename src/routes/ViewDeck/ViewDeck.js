@@ -11,9 +11,11 @@ const ViewDeck = () => {
   const { deckId } = useParams();
 
   useEffect(() => {
+    let cancel = false;
     const getDeck = async () => {
       try {
         const response = await readDeck(deckId);
+        if (cancel) return;
         setDeck(response);
         setRefresh(false);
       } catch (err) {
@@ -21,6 +23,9 @@ const ViewDeck = () => {
       }
     };
     getDeck();
+    return () => {
+      cancel = true;
+    };
   }, [refresh]);
 
   const refreshHandler = () => {

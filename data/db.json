@@ -6,24 +6,14 @@
       "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. "
     },
     {
+      "id": 2,
       "name": "React Router",
-      "description": "React Router is a collection of navigational components that compose declaratively with your application.",
-      "id": 2
+      "description": "React Router is a collection of navigational components that compose declaratively with your application."
     },
     {
-      "name": "",
-      "description": "",
-      "id": 3
-    },
-    {
-      "name": "",
-      "description": "",
-      "id": 4
-    },
-    {
-      "name": "Jefferson",
-      "description": "Jefferson",
-      "id": 5
+      "id": 5,
+      "name": "Bnana",
+      "description": "BombBanana"
     }
   ],
   "cards": [
@@ -63,6 +53,18 @@
       "back": "b",
       "deckId": 1,
       "id": 7
+    },
+    {
+      "front": "front",
+      "back": "back",
+      "deckId": 1,
+      "id": 8
+    },
+    {
+      "front": "",
+      "back": "",
+      "deckId": 1,
+      "id": 9
     }
   ]
 }
