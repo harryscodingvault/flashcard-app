@@ -2,12 +2,26 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
 import CustomForm from "../../components/CustomRecC/CustomForm/CustomForm";
-import { readCard, updateCard } from "../../utils/api/index";
+import { readCard, updateCard, readDeck } from "../../utils/api/index";
+import BreadCrump from "../../components/BreadCrump/BreadCrump";
 
 const EditCard = () => {
+  const [deck, setDeck] = useState({});
   const [card, setCard] = useState({});
-  const { cardId } = useParams();
+  const { deckId, cardId } = useParams();
   const history = useHistory();
+
+  useEffect(() => {
+    const getDeck = async () => {
+      try {
+        const response = await readDeck(deckId);
+        setDeck(response);
+      } catch (err) {
+        throw err;
+      }
+    };
+    getDeck();
+  }, []);
 
   useEffect(() => {
     const getCard = async () => {
@@ -33,13 +47,22 @@ const EditCard = () => {
 
   const renderFormState = {
     render: (
-      <CustomForm
-        title="Edit Card:"
-        type="card"
-        input_1={card.front}
-        input_2={card.back}
-        submitFormHandler={submitFormHandler}
-      />
+      <>
+        <BreadCrump
+          urlTo="edit_card"
+          deckName={deck.name}
+          deckId={deck.id}
+          cardId={card.id}
+        />
+
+        <CustomForm
+          title="Edit Card:"
+          type="card"
+          input_1={card.front}
+          input_2={card.back}
+          submitFormHandler={submitFormHandler}
+        />
+      </>
     ),
     loading: <h1>Loading...</h1>,
   };

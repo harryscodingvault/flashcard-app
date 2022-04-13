@@ -8,6 +8,8 @@ const BreadCrump = ({ deckId, deckName, cardId, urlTo = "" }) => {
     create_deck: [["Create Deck"], [`/decks/new`]],
     view_deck: [[deckName], [`/decks/${deckId}`]],
     edit_deck: [[deckName, "Edit Deck"], [`/decks/${deckId}`]],
+    add_card: [[deckName, "Add Card"], [`/decks/${deckId}`]],
+    edit_card: [[deckName, `Edit Card ${cardId}`], [`/decks/${deckId}`]],
   };
   console.log("pathnames", pathnames[urlTo]);
 

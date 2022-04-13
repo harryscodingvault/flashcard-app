@@ -3,6 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 
 import CustomForm from "../../components/CustomRecC/CustomForm/CustomForm";
 import { readDeck, createCard } from "../../utils/api/index";
+import BreadCrump from "../../components/BreadCrump/BreadCrump";
 
 const AddCard = () => {
   const [deck, setDeck] = useState({});
@@ -30,11 +31,14 @@ const AddCard = () => {
 
   const renderFormState = {
     render: (
-      <CustomForm
-        type="card"
-        title={`${deck.name}: Add Card`}
-        submitFormHandler={submitFormHandler}
-      />
+      <>
+        <BreadCrump urlTo="add_card" deckName={deck.name} deckId={deck.id} />
+        <CustomForm
+          type="card"
+          title={`${deck.name}: Add Card`}
+          submitFormHandler={submitFormHandler}
+        />
+      </>
     ),
     loading: <h1>Loading...</h1>,
   };
