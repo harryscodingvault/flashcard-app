@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import "./EditDeck.css";
 
 import CustomForm from "../../components/CustomRecC/CustomForm/CustomForm";
+import BreadCrump from "../../components/BreadCrump/BreadCrump";
 
 import { readDeck, updateDeck } from "../../utils/api/index";
 
@@ -29,13 +30,16 @@ const EditDeck = () => {
   };
   const renderDeckState = {
     render: (
-      <CustomForm
-        type="deck"
-        title="Edit Deck:"
-        input_1={deck.name}
-        input_2={deck.description}
-        submitFormHandler={submitFormHandler}
-      />
+      <>
+        <BreadCrump urlTo="edit_deck" deckName={deck.name} deckId={deck.id} />
+        <CustomForm
+          type="deck"
+          title="Edit Deck:"
+          input_1={deck.name}
+          input_2={deck.description}
+          submitFormHandler={submitFormHandler}
+        />
+      </>
     ),
     loading: <h1>Loading...</h1>,
   };

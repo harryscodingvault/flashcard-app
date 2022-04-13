@@ -6,6 +6,8 @@ const BreadCrump = ({ deckId, deckName, cardId, urlTo = "" }) => {
   const pathnames = {
     deck: [[deckName, "Study"], [`/decks/${deckId}`]],
     create_deck: [["Create Deck"], [`/decks/new`]],
+    view_deck: [[deckName], [`/decks/${deckId}`]],
+    edit_deck: [[deckName, "Edit Deck"], [`/decks/${deckId}`]],
   };
   console.log("pathnames", pathnames[urlTo]);
 
@@ -21,7 +23,6 @@ const BreadCrump = ({ deckId, deckName, cardId, urlTo = "" }) => {
         return isLast ? (
           <div key={index}>
             <h3>{title}</h3>
-            <h3> / </h3>
           </div>
         ) : (
           <div key={index}>

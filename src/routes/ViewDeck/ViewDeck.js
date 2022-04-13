@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 import CustomCard from "../../components/CustomRecC/CustomCard/CustomCard";
 import { readDeck } from "../../utils/api/index";
+import BreadCrump from "../../components/BreadCrump/BreadCrump";
 
 const ViewDeck = () => {
   const [deck, setDeck] = useState({});
@@ -47,6 +48,7 @@ const ViewDeck = () => {
 
   return (
     <div>
+      <BreadCrump urlTo="view_deck" deckName={deck.name} deckId={deck.id} />
       <h2>Deck: </h2>
       <CustomCard
         id={deck.id}
