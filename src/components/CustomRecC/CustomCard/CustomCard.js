@@ -25,7 +25,7 @@ const CustomCard = ({
             <h2>{text_1}</h2>
             <p>
               {quantity}{" "}
-              {quantity > 1 ? "cards" : quantity == 0 ? "cards" : "card"}
+              {quantity > 1 ? "cards" : quantity === 0 ? "cards" : "card"}
             </p>
           </div>
           <p>{text_2}</p>

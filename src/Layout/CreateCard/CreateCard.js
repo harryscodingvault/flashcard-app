@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
-import "./EditDeck.css";
+import { useHistory, useParams } from "react-router-dom";
 
 import CustomForm from "../../components/CustomRecC/CustomForm/CustomForm";
+import { readDeck, createCard } from "../../utils/api/index";
 import BreadCrump from "../../components/BreadCrump/BreadCrump";
 
-import { readDeck, updateDeck } from "../../utils/api/index";
-
-const EditDeck = () => {
+const CreateCard = () => {
+  const [deck, setDeck] = useState({});
   const { deckId } = useParams();
   const history = useHistory();
-  const [deck, setDeck] = useState({});
 
   useEffect(() => {
     const getDeck = async () => {
@@ -22,21 +20,22 @@ const EditDeck = () => {
       }
     };
     getDeck();
-  }, []);
+  }, [deckId]);
 
   const submitFormHandler = (form) => {
-    updateDeck({ id: deck.id, name: form.text_1, description: form.text_2 });
-    history.goBack();
+    console.log({ "deck.id": deck.id, front: form.text_1, back: form.text_2 });
+    createCard(deck.id, { front: form.text_1, back: form.text_2 });
+    console.log("deck.id");
+    deck.id && history.goBack();
   };
-  const renderDeckState = {
+
+  const renderFormState = {
     render: (
       <>
-        <BreadCrump urlTo="edit_deck" deckName={deck.name} deckId={deck.id} />
+        <BreadCrump urlTo="add_card" deckName={deck.name} deckId={deck.id} />
         <CustomForm
-          type="deck"
-          title="Edit Deck:"
-          input_1={deck.name}
-          input_2={deck.description}
+          type="card"
+          title={`${deck.name}: Add Card`}
           submitFormHandler={submitFormHandler}
         />
       </>
@@ -44,7 +43,7 @@ const EditDeck = () => {
     loading: <h1>Loading...</h1>,
   };
 
-  return deck.name ? renderDeckState.render : renderDeckState.loading;
+  return deck.name ? renderFormState.render : renderFormState.loading;
 };
 
-export default EditDeck;
+export default CreateCard;

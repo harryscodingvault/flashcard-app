@@ -27,7 +27,7 @@ const ViewDeck = () => {
     return () => {
       cancel = true;
     };
-  }, [refresh]);
+  }, [refresh, deckId]);
 
   const refreshHandler = () => {
     setRefresh(true);

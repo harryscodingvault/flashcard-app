@@ -11,7 +11,6 @@ const BreadCrump = ({ deckId, deckName, cardId, urlTo = "" }) => {
     add_card: [[deckName, "Add Card"], [`/decks/${deckId}`]],
     edit_card: [[deckName, `Edit Card ${cardId}`], [`/decks/${deckId}`]],
   };
-  console.log("pathnames", pathnames[urlTo]);
 
   return (
     <section className={`breadcrump-container`}>

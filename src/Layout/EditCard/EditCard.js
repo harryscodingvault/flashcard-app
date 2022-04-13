@@ -21,7 +21,7 @@ const EditCard = () => {
       }
     };
     getDeck();
-  }, []);
+  }, [deckId]);
 
   useEffect(() => {
     const getCard = async () => {
@@ -33,7 +33,7 @@ const EditCard = () => {
       }
     };
     getCard();
-  }, []);
+  }, [cardId]);
 
   const submitFormHandler = (form) => {
     updateCard({

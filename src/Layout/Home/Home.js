@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import CustomButton from "../../components/CustomRecC/CustomButton/CustomButton";
-import NotFound from "../../components/NotFound/NotFound";
 import CustomCard from "../../components/CustomRecC/CustomCard/CustomCard";
 import { listDecks } from "../../utils/api/index";
 

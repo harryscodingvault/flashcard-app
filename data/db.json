@@ -2,18 +2,13 @@
   "decks": [
     {
       "id": 1,
-      "name": "elxedlcior",
+      "name": "Roman Pila",
       "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation. "
     },
     {
       "id": 2,
       "name": "React Router",
       "description": "React Router is a collection of navigational components that compose declaratively with your application."
-    },
-    {
-      "id": 3,
-      "name": "tik",
-      "description": "tokbanana"
     },
     {
       "name": "Mock squash",
@@ -78,18 +73,6 @@
       "back": "potoato back",
       "deckId": 1,
       "id": 11
-    },
-    {
-      "front": "bnana",
-      "back": "bnana",
-      "deckId": 3,
-      "id": 12
-    },
-    {
-      "front": "wqwr",
-      "back": "qwr",
-      "deckId": 3,
-      "id": 13
     },
     {
       "front": "tiktokt",
