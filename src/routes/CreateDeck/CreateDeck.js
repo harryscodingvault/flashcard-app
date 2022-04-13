@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import CustomForm from "../../components/CustomRecC/CustomForm/CustomForm";
 import { createDeck } from "../../utils/api/index";
+import BreadCrump from "../../components/BreadCrump/BreadCrump";
 
 const CreateDeck = () => {
   const history = useHistory();
@@ -15,6 +16,7 @@ const CreateDeck = () => {
 
   return (
     <div>
+      <BreadCrump urlTo="create_deck" />
       <CustomForm
         type="deck"
         title="Create Deck"

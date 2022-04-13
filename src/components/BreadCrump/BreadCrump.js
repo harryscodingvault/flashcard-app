@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const BreadCrump = ({ deckId, deckName, cardId, urlTo = "" }) => {
   const pathnames = {
     deck: [[deckName, "Study"], [`/decks/${deckId}`]],
+    create_deck: [["Create Deck"], [`/decks/new`]],
   };
   console.log("pathnames", pathnames[urlTo]);
 
