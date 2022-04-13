@@ -1,42 +1,38 @@
 import React from "react";
 import "./BreadCrump.css";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const BreadCrump = ({ history, location: { pathname } }) => {
-  console.log("path", pathname);
-
-  const pathnames = pathname.split("/").filter((x) => x);
-  console.log("path", pathnames);
+const BreadCrump = ({ deckId, deckName, cardId, urlTo = "" }) => {
+  const pathnames = {
+    deck: [[deckName, "Study"], [`/decks/${deckId}`]],
+  };
+  console.log("pathnames", pathnames[urlTo]);
 
   return (
-    <section
-      className={`breadcrump-container ${
-        pathnames.length === 0 && "hide-breadcrump-container"
-      }`}
-    >
+    <section className={`breadcrump-container`}>
       <Link to="/">
         <h3>Home</h3>
       </Link>
       <h3> / </h3>
-      {pathnames.map((name, index) => {
-        const urlLink = `/${pathnames.slice(0, index + 1).join("/")}`;
-        const isLast = index === pathnames.length - 1;
+      {pathnames[urlTo][0].map((title, index) => {
+        const urlLink = pathnames[urlTo][1][index];
+        const isLast = index === pathnames[urlTo][0].length - 1;
         return isLast ? (
-          <>
-            <h3>{name}</h3>
+          <div key={index}>
+            <h3>{title}</h3>
             <h3> / </h3>
-          </>
+          </div>
         ) : (
-          <>
+          <div key={index}>
             <Link to={urlLink}>
-              <h3>{name}</h3>
+              <h3>{title}</h3>
             </Link>
             <h3> / </h3>
-          </>
+          </div>
         );
       })}
     </section>
   );
 };
 
-export default withRouter(BreadCrump);
+export default BreadCrump;

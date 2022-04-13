@@ -8,23 +8,25 @@
     align-items: center;
 }
 
-.hide-breadcrump-container{
-    display: none;
+
+.breadcrump-container div{
+    display: flex;
+    flex-direction: row;
+   
 }
 
 
-
 .breadcrump-container a{
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
     text-decoration: none;
     color: blue;
     cursor: pointer;
 }
 
 .breadcrump-container h3{
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
 }
 
 .breadcrump-container a:hover{

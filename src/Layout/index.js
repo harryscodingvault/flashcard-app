@@ -19,9 +19,7 @@ function Layout() {
   return (
     <>
       <Header />
-
       <div className="main-app-container">
-        <BreadCrump />
         <Switch>
           <Route exact path="/">
             <Home />
