@@ -5,13 +5,13 @@ import "./Layout.css";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 
-import Home from "../routes/Home/Home";
-import EditDeck from "../routes/EditDeck/EditDeck";
-import StudyDeck from "../routes/StudyDeck/StudyDeck";
-import CreateDeck from "../routes/CreateDeck/CreateDeck";
-import ViewDeck from "../routes/ViewDeck/ViewDeck";
+import Home from "./Home/Home";
+import EditDeck from "./EditDeck/EditDeck";
+import StudyDeck from "./StudyDeck/StudyDeck";
+import CreateDeck from "./CreateDeck/CreateDeck";
+import ViewDeck from "./ViewDeck/ViewDeck";
 import CreateCard from "./CreateCard/CreateCard";
-import EditCard from "../routes/EditCard/EditCard";
+import EditCard from "./EditCard/EditCard";
 import NotFound from "../components/NotFound/NotFound";
 
 function Layout() {
