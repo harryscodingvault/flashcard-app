@@ -25,40 +25,43 @@ const CustomForm = ({ type, title, input_1, input_2, submitFormHandler }) => {
 
   const formType = {
     deck: (
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="text_1"
-          placeholder="Deck name"
-          value={formData.text_1}
-          onChange={handleChange}
-        />
-        <label>Description: </label>
-        <textarea
-          name="text_2"
-          placeholder="Deck description"
-          rows="10"
-          value={formData.text_2}
-          onChange={handleChange}
-        />
-        <div className="form-button-group">
-          <CustomButton
-            title="Cancel"
-            size="small"
-            kind="danger"
-            purpose="cancel"
-            onClickHandler="cancelFormHandler"
+      <>
+        <form onSubmit={handleSubmit}>
+          <label>Name:</label>
+          <input
+            type="text"
+            name="text_1"
+            placeholder="Deck name"
+            value={formData.text_1}
+            onChange={handleChange}
           />
-          <CustomButton
-            title="Submit"
-            size="small"
-            kind="success"
-            type="submit"
-            purpose="add"
+          <label>Description: </label>
+          <textarea
+            name="text_2"
+            placeholder="Deck description"
+            rows="10"
+            value={formData.text_2}
+            onChange={handleChange}
           />
-        </div>
-      </form>
+          <div className="form-button-group">
+            <CustomButton
+              title="Cancel"
+              size="small"
+              kind="danger"
+              purpose="cancel"
+              onClickHandler="cancelFormHandler"
+              type="button"
+            />
+            <CustomButton
+              title="Submit"
+              size="small"
+              kind="success"
+              type="submit"
+              purpose="add"
+            />
+          </div>
+        </form>
+      </>
     ),
     card: (
       <form onSubmit={handleSubmit}>
@@ -84,6 +87,7 @@ const CustomForm = ({ type, title, input_1, input_2, submitFormHandler }) => {
             size="small"
             kind="danger"
             purpose="cancel"
+            type="button"
             onClickHandler="cancelFormHandler"
           />
           <CustomButton

@@ -5,6 +5,7 @@ import "./StudyDeck.css";
 import CustomCard from "../../components/CustomRecC/CustomCard/CustomCard";
 import { readDeck } from "../../utils/api/index";
 import CustomButton from "../../components/CustomRecC/CustomButton/CustomButton";
+import BreadCrump from "../../components/BreadCrump/BreadCrump";
 
 const StudyDeck = () => {
   const { deckId } = useParams();
@@ -53,7 +54,7 @@ const StudyDeck = () => {
   const deckDisplay = {
     render: (
       <>
-        <h1 className="deck-title">Study: {deck.name}</h1>
+        <h1 className="deck-title">{deck.name}: Study</h1>
         <CustomCard
           id={deckId}
           type="study"
@@ -70,8 +71,8 @@ const StudyDeck = () => {
     loading: <h1 className="deck-title">Loading...</h1>,
     notEnoughCards: (
       <div className="add-cards-container">
-        <h1 className="deck-title">Study: {deck.name}</h1>
-        <h2>Not enough cards</h2>
+        <h1 className="deck-title">{deck.name}: Study</h1>
+        <h2>Not enough cards.</h2>
         <p>
           You need at least 3 cards to study. There are {deck?.cards?.length}{" "}
           cards in this deck
@@ -86,8 +87,8 @@ const StudyDeck = () => {
     ),
   };
 
-  return deck.cards
-    ? deck.cards.length > 2
+  return deck?.cards?.length
+    ? deck?.cards?.length > 2
       ? deckDisplay.render
       : deckDisplay.notEnoughCards
     : deckDisplay.loading;

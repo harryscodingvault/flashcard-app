@@ -38,9 +38,10 @@ const CustomButton = ({
 
   const handlers = {
     deleteDeckHandler: () => {
-      window.confirm("Are you sure you want to delete this deck?");
-      deleteDeck(id);
-      refreshHandler ? refreshHandler() : history.push(`/`);
+      if (window.confirm("Are you sure you want to delete this deck?")) {
+        deleteDeck(id);
+        refreshHandler ? refreshHandler() : history.push(`/`);
+      }
     },
     studyDeckHandler: () => {
       history.push(`/decks/${id}/study`);
@@ -67,25 +68,42 @@ const CustomButton = ({
       history.push(`/decks/${id}/cards/new`);
     },
     deleteCardHandler: () => {
-      window.confirm("Delete this card?\n\nYou will not be able to recover it");
-      deleteCard(id);
-      refreshHandler();
+      if (
+        window.confirm(
+          "Delete this card?\n\nYou will not be able to recover it"
+        )
+      ) {
+        deleteCard(id);
+        refreshHandler();
+      }
     },
     editCardHandler: () => {
       history.push(`/decks/${deckId}/cards/${id}/edit`);
     },
   };
+  const renderButton = {
+    form: (
+      <button
+        className={`container ${kind} ${size}`}
+        onClick={handlers[onClickHandler]}
+        type={type}
+      >
+        {icons[purpose]}
+        {title}
+      </button>
+    ),
+    ordinary: (
+      <button
+        className={`container ${kind} ${size}`}
+        onClick={handlers[onClickHandler]}
+      >
+        {icons[purpose]}
+        {title}
+      </button>
+    ),
+  };
 
-  return (
-    <button
-      className={`container ${kind} ${size}`}
-      onClick={handlers[onClickHandler]}
-      type={type}
-    >
-      {icons[purpose]}
-      {title}
-    </button>
-  );
+  return type ? renderButton.form : renderButton.ordinary;
 };
 
 export default CustomButton;

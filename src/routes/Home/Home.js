@@ -15,7 +15,7 @@ const Home = () => {
     const getDeck = async () => {
       try {
         const response = await listDecks();
-        console.log("decks", response);
+
         setDecks(response);
         setRefresh(false);
       } catch (err) {
@@ -29,7 +29,6 @@ const Home = () => {
 
   const refreshHandler = () => {
     setRefresh(true);
-    console.log("refresh");
   };
 
   const renderDecks = decks.map((item) => {
@@ -55,8 +54,7 @@ const Home = () => {
         purpose="add"
         onClickHandler="createDeckHandler"
       />
-      {renderDecks}
-      {!decks.length && <NotFound />}
+      {!decks.length ? <h1>0 cards</h1> : renderDecks}
     </>
   );
 };

@@ -32,7 +32,7 @@ const AddCard = () => {
     render: (
       <CustomForm
         type="card"
-        title={`${deck.name}: Add Cards`}
+        title={`${deck.name}: Add Card`}
         submitFormHandler={submitFormHandler}
       />
     ),

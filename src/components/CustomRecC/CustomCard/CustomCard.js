@@ -24,7 +24,8 @@ const CustomCard = ({
           <div className="card-top-text-group">
             <h2>{text_1}</h2>
             <p>
-              {quantity} {quantity > 1 ? "cards" : "card"}
+              {quantity}{" "}
+              {quantity > 1 ? "cards" : quantity == 0 ? "cards" : "card"}
             </p>
           </div>
           <p>{text_2}</p>

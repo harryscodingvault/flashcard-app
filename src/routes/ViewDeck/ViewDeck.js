@@ -30,7 +30,6 @@ const ViewDeck = () => {
 
   const refreshHandler = () => {
     setRefresh(true);
-    console.log("refresh");
   };
 
   const getAllCards = deck?.cards?.map((item) => {
