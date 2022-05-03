@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import CustomButton from "../../components/CustomRecC/CustomButton/CustomButton";
 import CustomCard from "../../components/CustomRecC/CustomCard/CustomCard";
-import { listDecks } from "../../utils/api/index";
+import { getDecks } from "../../api/api.localStorage";
 
 const Home = () => {
   const [decks, setDecks] = useState([]);
@@ -13,7 +13,8 @@ const Home = () => {
 
     const getDeck = async () => {
       try {
-        const response = await listDecks();
+        let response = await getDecks();
+        response = response ? response.map((item) => item) : [];
 
         setDecks(response);
         setRefresh(false);

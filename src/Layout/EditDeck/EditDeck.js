@@ -5,7 +5,7 @@ import "./EditDeck.css";
 import CustomForm from "../../components/CustomRecC/CustomForm/CustomForm";
 import BreadCrump from "../../components/BreadCrump/BreadCrump";
 
-import { readDeck, updateDeck } from "../../utils/api/index";
+import { editDeck, getDeck as readDeck } from "../../api/api.localStorage";
 
 const EditDeck = () => {
   const { deckId } = useParams();
@@ -16,6 +16,7 @@ const EditDeck = () => {
     const getDeck = async () => {
       try {
         const response = await readDeck(deckId);
+        console.log("thidDe", response);
         setDeck(response);
       } catch (err) {
         throw err;
@@ -25,7 +26,12 @@ const EditDeck = () => {
   }, [deckId]);
 
   const submitFormHandler = (form) => {
-    updateDeck({ id: deck.id, name: form.text_1, description: form.text_2 });
+    const deckInfo = {
+      id: deckId,
+      name: form.text_1,
+      description: form.text_2,
+    };
+    editDeck(deckInfo);
     history.goBack();
   };
   const renderDeckState = {

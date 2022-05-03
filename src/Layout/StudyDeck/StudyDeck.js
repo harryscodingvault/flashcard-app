@@ -34,7 +34,6 @@ const StudyDeck = () => {
   const changeCardPositionHandler = () => {
     setCurrentPosition(!currentPosition);
     setAllowNewCard(true);
-    console.log(allowNewCard);
   };
 
   const nextCardHandler = () => {

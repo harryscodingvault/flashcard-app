@@ -3,7 +3,7 @@ import "./ViewDeck.css";
 import { useParams } from "react-router-dom";
 
 import CustomCard from "../../components/CustomRecC/CustomCard/CustomCard";
-import { readDeck } from "../../utils/api/index";
+import { getDeck as retrieveDeck } from "../../api/api.localStorage";
 import BreadCrump from "../../components/BreadCrump/BreadCrump";
 
 const ViewDeck = () => {
@@ -15,7 +15,8 @@ const ViewDeck = () => {
     let cancel = false;
     const getDeck = async () => {
       try {
-        const response = await readDeck(deckId);
+        const response = await retrieveDeck(deckId);
+
         if (cancel) return;
         setDeck(response);
         setRefresh(false);
