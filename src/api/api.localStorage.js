@@ -14,6 +14,30 @@ const checkIfDeckExist = (deckId) => {
   }
 };
 
+const checkIfCardExist = (cardId) => {
+  try {
+    const decks = JSON.parse(localStorage.getItem("decks"));
+    const currentDeck = decks.find((deck) =>
+      deck.cards.find((item) => item.id === cardId)
+    );
+    const currentDeckIndex = checkIfDeckExist(currentDeck.id);
+    const currentCardIndex = currentDeck.cards
+      .map((item) => item.id)
+      .indexOf(cardId);
+
+    if (currentCardIndex !== -1) {
+      return {
+        card: currentDeck.cards[currentCardIndex],
+        index: currentCardIndex,
+        deckId: currentDeck.id,
+        deckIndex: currentDeckIndex.index,
+      };
+    }
+  } catch (err) {
+    throw new Error("Something spicy is going on, no eggs for easter fella!!");
+  }
+};
+
 // DECKS API
 export const getDecks = () => {
   try {
@@ -87,7 +111,14 @@ export const deleteDeck = (deckId) => {
 // CARDS API
 export const getCardsFromDesks = (deckId) => {};
 
-export const getCard = (deckId, cardId) => {};
+export const getCard = (deckId, cardId) => {
+  try {
+    const currentCard = checkIfCardExist(deckId, cardId);
+    return currentCard.card;
+  } catch (err) {
+    throw new Error("Cannot get card :(");
+  }
+};
 
 export const createCard = (deckId, cardInfo) => {
   try {
@@ -112,4 +143,15 @@ export const createCard = (deckId, cardInfo) => {
 
 export const editCard = (deckId, cardInfo) => {};
 
-export const deleteCard = (deckId, cardId) => {};
+export const deleteCard = (cardId) => {
+  try {
+    const currentCard = checkIfCardExist(cardId);
+    const decks = JSON.parse(localStorage.getItem("decks"));
+
+    decks[currentCard.deckIndex].cards.splice(currentCard.index, 1);
+
+    localStorage.setItem("decks", JSON.stringify(decks));
+  } catch (err) {
+    throw new Error("Could not delete card :(");
+  }
+};
