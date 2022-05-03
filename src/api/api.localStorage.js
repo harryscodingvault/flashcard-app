@@ -37,7 +37,7 @@ export const createDeck = (deckInfo) => {
   try {
     const { name, description } = deckInfo;
     const decks = JSON.parse(localStorage.getItem("decks"));
-    console.log("deck", decks);
+
     if (decks !== null) {
       localStorage.setItem(
         "decks",
@@ -89,8 +89,27 @@ export const getCardsFromDesks = (deckId) => {};
 
 export const getCard = (deckId, cardId) => {};
 
-export const createCard = (deckId) => {};
+export const createCard = (deckId, cardInfo) => {
+  try {
+    const { front, back } = cardInfo;
+    const decks = JSON.parse(localStorage.getItem("decks"));
+    let currentDeck = checkIfDeckExist(deckId);
+    const newCard = {
+      id: nanoid(),
+      front: front,
+      back: back,
+    };
+    console.log("card info", cardInfo);
 
-export const editCard = (deckId, cardId) => {};
+    currentDeck.deck.cards.push(newCard);
+    console.log(" currentDeck.deck", currentDeck.deck);
+    decks[currentDeck.index] = currentDeck.deck;
+    localStorage.setItem("decks", JSON.stringify(decks));
+  } catch (err) {
+    throw new Error("Could not create card ;(");
+  }
+};
+
+export const editCard = (deckId, cardInfo) => {};
 
 export const deleteCard = (deckId, cardId) => {};

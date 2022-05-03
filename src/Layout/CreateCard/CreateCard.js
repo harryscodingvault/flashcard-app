@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import CustomForm from "../../components/CustomRecC/CustomForm/CustomForm";
-import { readDeck, createCard } from "../../utils/api/index";
+import { getDeck as readDeck, createCard } from "../../api/api.localStorage";
 import BreadCrump from "../../components/BreadCrump/BreadCrump";
 
 const CreateCard = () => {
@@ -23,9 +23,8 @@ const CreateCard = () => {
   }, [deckId]);
 
   const submitFormHandler = (form) => {
-    console.log({ "deck.id": deck.id, front: form.text_1, back: form.text_2 });
     createCard(deck.id, { front: form.text_1, back: form.text_2 });
-    console.log("deck.id");
+
     deck.id && history.goBack();
   };
 
