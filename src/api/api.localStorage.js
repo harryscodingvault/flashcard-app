@@ -109,7 +109,6 @@ export const deleteDeck = (deckId) => {
 };
 
 // CARDS API
-export const getCardsFromDesks = (deckId) => {};
 
 export const getCard = (deckId, cardId) => {
   try {
@@ -141,7 +140,24 @@ export const createCard = (deckId, cardInfo) => {
   }
 };
 
-export const editCard = (deckId, cardInfo) => {};
+export const editCard = (cardInfo) => {
+  try {
+    const { id, front, back } = cardInfo;
+    const decks = JSON.parse(localStorage.getItem("decks"));
+    const currentCard = checkIfCardExist(id);
+    const currentDeck = checkIfDeckExist(currentCard.deckId);
+    const updatedCard = {
+      id: id,
+      front: front,
+      back: back,
+    };
+    currentDeck.deck.cards[currentCard.index] = updatedCard;
+    decks[currentDeck.index] = currentDeck.deck;
+    localStorage.setItem("decks", JSON.stringify(decks));
+  } catch (err) {
+    throw new Error("Could not edit card :(");
+  }
+};
 
 export const deleteCard = (cardId) => {
   try {

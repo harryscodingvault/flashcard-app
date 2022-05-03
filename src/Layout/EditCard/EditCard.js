@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
 import CustomForm from "../../components/CustomRecC/CustomForm/CustomForm";
-import { readCard, updateCard, readDeck } from "../../utils/api/index";
+import {
+  getDeck as readDeck,
+  editCard,
+  getCard as readCard,
+} from "../../api/api.localStorage";
 import BreadCrump from "../../components/BreadCrump/BreadCrump";
 
 const EditCard = () => {
@@ -36,9 +40,8 @@ const EditCard = () => {
   }, [cardId]);
 
   const submitFormHandler = (form) => {
-    updateCard({
+    editCard({
       id: card.id,
-      deckId: card.deckId,
       front: form.text_1,
       back: form.text_2,
     });

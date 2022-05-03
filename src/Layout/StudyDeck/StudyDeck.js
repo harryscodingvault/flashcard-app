@@ -3,7 +3,8 @@ import { useParams, useHistory } from "react-router-dom";
 import "./StudyDeck.css";
 
 import CustomCard from "../../components/CustomRecC/CustomCard/CustomCard";
-import { readDeck } from "../../utils/api/index";
+
+import { getDeck as readDeck } from "../../api/api.localStorage";
 import CustomButton from "../../components/CustomRecC/CustomButton/CustomButton";
 import BreadCrump from "../../components/BreadCrump/BreadCrump";
 
