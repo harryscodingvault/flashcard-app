@@ -77,7 +77,12 @@ export const editDeck = (deckInfo) => {
   }
 };
 
-export const deleteDeck = (deckId) => {};
+export const deleteDeck = (deckId) => {
+  const currentDeck = checkIfDeckExist(deckId);
+  const decks = JSON.parse(localStorage.getItem("decks"));
+  decks.splice(currentDeck.index, 1);
+  localStorage.setItem("decks", JSON.stringify(decks));
+};
 
 // CARDS API
 export const getCardsFromDesks = (deckId) => {};

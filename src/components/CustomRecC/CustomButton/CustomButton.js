@@ -8,7 +8,8 @@ import { GrEdit } from "react-icons/gr";
 import { BiBookBookmark } from "react-icons/bi";
 import { useHistory, useParams } from "react-router-dom";
 
-import { deleteDeck, deleteCard } from "../../../utils/api/index";
+import { deleteCard } from "../../../utils/api/index";
+import { deleteDeck } from "../../../api/api.localStorage";
 
 const CustomButton = ({
   id,
