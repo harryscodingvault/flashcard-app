@@ -22,15 +22,24 @@ const CustomForm = ({ type, title, input_1, input_2, submitFormHandler }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
-      formData.text_1 !== "" ||
-      formData.text_1 === null ||
-      formData.text_1 === undefined
+      ((formData.text_1 === "" ||
+        formData.text_1 === null ||
+        formData.text_1 === undefined) &&
+        type === "deck") ||
+      ((formData.text_1 === "" ||
+        formData.text_1 === null ||
+        formData.text_1 === undefined ||
+        formData.text_2 === "" ||
+        formData.text_2 === null ||
+        formData.text_2 === undefined) &&
+        type === "card")
     ) {
+      setDisplayAlert(true);
+    } else {
       submitFormHandler(formData);
       setFormData({ ...initialFormState });
       setDisplayAlert(false);
     }
-    setDisplayAlert(true);
   };
 
   const formType = {
@@ -77,41 +86,44 @@ const CustomForm = ({ type, title, input_1, input_2, submitFormHandler }) => {
       </>
     ),
     card: (
-      <form onSubmit={handleSubmit}>
-        <label>Front:</label>
-        <textarea
-          name="text_1"
-          placeholder="Back side of card"
-          rows="5"
-          value={formData.text_1}
-          onChange={handleChange}
-        />
-        <label>Back: </label>
-        <textarea
-          name="text_2"
-          placeholder="Front side of card"
-          rows="5"
-          value={formData.text_2}
-          onChange={handleChange}
-        />
-        <div className="form-button-group">
-          <CustomButton
-            title="Cancel"
-            size="small"
-            kind="danger"
-            purpose="cancel"
-            type="button"
-            onClickHandler="cancelFormHandler"
+      <>
+        {displayAlert && <AlertMessage message="Forgot filling one side?" />}
+        <form onSubmit={handleSubmit}>
+          <label>Front:</label>
+          <textarea
+            name="text_1"
+            placeholder="Back side of card"
+            rows="5"
+            value={formData.text_1}
+            onChange={handleChange}
           />
-          <CustomButton
-            title="Save"
-            size="small"
-            kind="success"
-            type="submit"
-            purpose="add"
+          <label>Back: </label>
+          <textarea
+            name="text_2"
+            placeholder="Front side of card"
+            rows="5"
+            value={formData.text_2}
+            onChange={handleChange}
           />
-        </div>
-      </form>
+          <div className="form-button-group">
+            <CustomButton
+              title="Cancel"
+              size="small"
+              kind="danger"
+              purpose="cancel"
+              type="button"
+              onClickHandler="cancelFormHandler"
+            />
+            <CustomButton
+              title="Save"
+              size="small"
+              kind="success"
+              type="submit"
+              purpose="add"
+            />
+          </div>
+        </form>
+      </>
     ),
   };
 
