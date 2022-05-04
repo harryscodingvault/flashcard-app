@@ -91,6 +91,8 @@ const StudyDeck = () => {
             kind="casual"
             size="medium"
             purpose="add"
+            onClickHandler="addCardsHandler"
+            id={deckId}
           />
         </div>
       </>
