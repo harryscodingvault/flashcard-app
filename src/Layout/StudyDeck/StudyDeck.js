@@ -99,11 +99,7 @@ const StudyDeck = () => {
     ),
   };
 
-  return deck?.cards?.length >= 0
-    ? deck.cards.length > 2
-      ? deckDisplay.render
-      : deckDisplay.notEnoughCards
-    : deckDisplay.loading;
+  return deck?.cards?.length ? deckDisplay.render : deckDisplay.notEnoughCards;
 };
 
 export default StudyDeck;

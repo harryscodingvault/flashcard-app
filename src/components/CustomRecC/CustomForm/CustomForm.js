@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "./CustomForm.css";
 
 import CustomButton from "../CustomButton/CustomButton";
+import AlertMessage from "../AlertMessage/AlertMessage";
 
 const CustomForm = ({ type, title, input_1, input_2, submitFormHandler }) => {
+  const [displayAlert, setDisplayAlert] = useState(false);
   const initialFormState = {
     text_1: input_1 ? input_1 : "",
     text_2: input_2 ? input_2 : "",
@@ -19,13 +21,22 @@ const CustomForm = ({ type, title, input_1, input_2, submitFormHandler }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    submitFormHandler(formData);
-    setFormData({ ...initialFormState });
+    if (
+      formData.text_1 !== "" ||
+      formData.text_1 === null ||
+      formData.text_1 === undefined
+    ) {
+      submitFormHandler(formData);
+      setFormData({ ...initialFormState });
+      setDisplayAlert(false);
+    }
+    setDisplayAlert(true);
   };
 
   const formType = {
     deck: (
       <>
+        {displayAlert && <AlertMessage message="Forgot about  deck's title?" />}
         <form onSubmit={handleSubmit}>
           <label>Name:</label>
           <input
@@ -34,6 +45,7 @@ const CustomForm = ({ type, title, input_1, input_2, submitFormHandler }) => {
             placeholder="Deck name"
             value={formData.text_1}
             onChange={handleChange}
+            maxLength={20}
           />
           <label>Description: </label>
           <textarea
@@ -42,6 +54,7 @@ const CustomForm = ({ type, title, input_1, input_2, submitFormHandler }) => {
             rows="10"
             value={formData.text_2}
             onChange={handleChange}
+            maxLength={100}
           />
           <div className="form-button-group">
             <CustomButton

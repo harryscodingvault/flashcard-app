@@ -54,7 +54,11 @@ const Home = () => {
         purpose="add"
         onClickHandler="createDeckHandler"
       />
-      {!decks.length ? <h1>0 cards</h1> : renderDecks}
+      {!decks.length ? (
+        <h1>Make some decks to start practicing</h1>
+      ) : (
+        renderDecks
+      )}
     </>
   );
 };

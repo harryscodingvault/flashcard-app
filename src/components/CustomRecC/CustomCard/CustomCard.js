@@ -22,13 +22,17 @@ const CustomCard = ({
       <>
         <div className="card-text-container">
           <div className="card-top-text-group">
-            <h2>{text_1}</h2>
+            <h2>
+              {text_1?.length > 20 ? `${text_1?.substring(0, 20)}...` : text_1}
+            </h2>
             <p>
               {quantity}{" "}
               {quantity > 1 ? "cards" : quantity === 0 ? "cards" : "card"}
             </p>
           </div>
-          <p>{text_2}</p>
+          <p>
+            {text_2?.length > 100 ? `${text_2?.substring(0, 100)}...` : text_2}
+          </p>
         </div>
         <div className="card-button-container">
           <div className="card-button-group-1">
@@ -125,8 +129,8 @@ const CustomCard = ({
       <>
         <div className="card-text-container">
           <div className="card-top-text-group">
-            <p>{text_1}</p>
-            <p>{text_2}</p>
+            <p>{text_1?.substring(0, 50)}...</p>
+            <p>{text_2?.substring(0, 50)}...</p>
           </div>
         </div>
         <div className="card-button-container">

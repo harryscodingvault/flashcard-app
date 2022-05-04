@@ -1,0 +1,12 @@
+.alert-message {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+    background-color: red;
+    height: 3rem;
+    color: #fff;
+    width: 100%;
+    
+   
+}
