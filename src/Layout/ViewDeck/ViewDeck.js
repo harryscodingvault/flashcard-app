@@ -61,7 +61,11 @@ const ViewDeck = () => {
         editDeck={true}
       />
 
-      <h2>Cards: </h2>
+      {deck?.cards?.length ? (
+        <h2>Cards: </h2>
+      ) : (
+        <h2>Add some cards to the deck</h2>
+      )}
       <section className="study-cards-section">
         <div className="map-study-cards"> {getAllCards}</div>
       </section>

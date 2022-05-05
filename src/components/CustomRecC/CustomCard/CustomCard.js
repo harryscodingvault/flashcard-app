@@ -100,7 +100,7 @@ const CustomCard = ({
                 ? `Card ${currentCard}  of ${quantity}`
                 : "Only card"}
             </h2>
-            {currentPosition ? <h3>Front: </h3> : <h3>Back: </h3>}
+            {currentPosition ? <h3>Front</h3> : <h3>Back</h3>}
           </div>
           <p>{text_2}</p>
         </div>
