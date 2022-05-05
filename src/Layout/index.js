@@ -16,7 +16,7 @@ import NotFound from "../components/NotFound/NotFound";
 
 function Layout() {
   return (
-    <>
+    <div className="total-layout">
       <Header />
       <div className="main-app-container">
         <Switch>
@@ -47,7 +47,7 @@ function Layout() {
         </Switch>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

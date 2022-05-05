@@ -7,8 +7,7 @@ function Header() {
     <header>
       <Link to="/">
         <div className="text-container">
-          <h1>Flashcard-o-matic</h1>
-          <p>Discover The Flashcard Difference.</p>
+          <h1>FlashCard_Simple</h1>
         </div>
       </Link>
     </header>

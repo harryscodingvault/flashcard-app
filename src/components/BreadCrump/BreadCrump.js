@@ -23,12 +23,16 @@ const BreadCrump = ({ deckId, deckName, cardId, urlTo = "" }) => {
         const isLast = index === pathnames[urlTo][0].length - 1;
         return isLast ? (
           <div key={index}>
-            <h3>{title}</h3>
+            <h3>
+              {title?.length > 10 ? `${title?.substring(0, 10)}...` : title}
+            </h3>
           </div>
         ) : (
           <div key={index}>
             <Link to={urlLink}>
-              <h3>{title}</h3>
+              <h3>
+                {title?.length > 10 ? `${title?.substring(0, 10)}...` : title}
+              </h3>
             </Link>
             <h3> / </h3>
           </div>

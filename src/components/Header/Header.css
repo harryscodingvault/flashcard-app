@@ -1,9 +1,10 @@
 header{
     display: flex;
-    height: 10rem;
+    height: 5rem;
     background-color: #000;
     color: #fff;
     align-items: center;
+   
     padding-left:4rem;
    
 }

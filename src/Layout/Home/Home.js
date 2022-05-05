@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./Home.css";
 
 import CustomButton from "../../components/CustomRecC/CustomButton/CustomButton";
 import CustomCard from "../../components/CustomRecC/CustomCard/CustomCard";
@@ -34,15 +35,17 @@ const Home = () => {
   const renderDecks = decks.map((item) => {
     const { id, cards, description, name } = item;
     return (
-      <CustomCard
-        key={id}
-        id={id}
-        text_1={name}
-        text_2={description}
-        type="deck"
-        quantity={cards.length}
-        refreshHandler={refreshHandler}
-      />
+      <div className="deck-unit">
+        <CustomCard
+          key={id}
+          id={id}
+          text_1={name}
+          text_2={description}
+          type="deck"
+          quantity={cards.length}
+          refreshHandler={refreshHandler}
+        />
+      </div>
     );
   });
   return (
@@ -54,11 +57,13 @@ const Home = () => {
         purpose="add"
         onClickHandler="createDeckHandler"
       />
-      {!decks.length ? (
-        <h1>Make some decks to start practicing</h1>
-      ) : (
-        renderDecks
-      )}
+      <div className="decks-group">
+        {!decks.length ? (
+          <h1>Make some decks to start practicing</h1>
+        ) : (
+          renderDecks
+        )}
+      </div>
     </>
   );
 };

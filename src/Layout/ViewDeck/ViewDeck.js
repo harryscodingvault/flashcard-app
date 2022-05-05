@@ -36,19 +36,21 @@ const ViewDeck = () => {
 
   const getAllCards = deck?.cards?.map((item) => {
     return (
-      <CustomCard
-        key={item.id}
-        id={item.id}
-        text_1={item.front}
-        text_2={item.back}
-        type="edit"
-        refreshHandler={refreshHandler}
-      />
+      <div className="card-unit">
+        <CustomCard
+          key={item.id}
+          id={item.id}
+          text_1={item.front}
+          text_2={item.back}
+          type="edit"
+          refreshHandler={refreshHandler}
+        />
+      </div>
     );
   });
 
   return (
-    <div>
+    <div className="deck-view">
       <BreadCrump urlTo="view_deck" deckName={deck.name} deckId={deck.id} />
       <h2>Deck: </h2>
       <CustomCard
@@ -59,8 +61,9 @@ const ViewDeck = () => {
         quantity={deck?.cards?.length}
         editDeck={true}
       />
+
+      <h2>Cards: </h2>
       <section className="study-cards-section">
-        <h2>Cards: </h2>
         <div className="map-study-cards"> {getAllCards}</div>
       </section>
     </div>

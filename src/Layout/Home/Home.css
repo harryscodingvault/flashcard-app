@@ -1,11 +1,4 @@
-.deck-view{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.map-study-cards{
+.decks-group{
     display: flex;
     flex-wrap: wrap;
     align-items:center;
@@ -13,7 +6,7 @@
     flex-direction: row;
 }
 
-.card-unit{
+.deck-unit {
   margin: 5px 10px;
   flex: 0 1 20%;
  display: flex;
