@@ -34,10 +34,10 @@ const Home = () => {
 
   const renderDecks = decks.map((item) => {
     const { id, cards, description, name } = item;
+
     return (
-      <div className="deck-unit">
+      <div className="deck-unit" key={id}>
         <CustomCard
-          key={id}
           id={id}
           text_1={name}
           text_2={description}

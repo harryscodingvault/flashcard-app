@@ -8,18 +8,15 @@
     
 }
 
-.custom-form-container h1{
+.custom-form-container h2{
     padding-left: 1rem;
     padding-top:  1rem;
-}
-
-.custom-form-container h1{
-    padding-left: 1rem;
-    padding-top:  1rem;
+   
 }
 
 .custom-form-container label, .custom-form-container input, .custom-form-container textarea{
     font-size: 1.3rem;
+    
 }
 .custom-form-container input, .custom-form-container textarea{
     font-size: 1.3rem;
@@ -41,3 +38,11 @@
     padding-right: 1rem;
     padding-left:  1rem;
 }
+
+@media only screen and (max-width: 600px) {
+    .custom-form-container {
+        width: 95vw;
+        height: 95vw;
+        height: 70vh;
+    }
+  }

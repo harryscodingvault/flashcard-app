@@ -36,9 +36,8 @@ const ViewDeck = () => {
 
   const getAllCards = deck?.cards?.map((item) => {
     return (
-      <div className="card-unit">
+      <div className="card-unit" key={item.id}>
         <CustomCard
-          key={item.id}
           id={item.id}
           text_1={item.front}
           text_2={item.back}

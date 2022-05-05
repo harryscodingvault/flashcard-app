@@ -47,8 +47,6 @@ const StudyDeck = () => {
       }
     }
     setCurrentCard(allCards[currentCardIndex + 1]);
-    console.log(allCards);
-    console.log("currentCard", currentCard);
   };
 
   const deckDisplay = {

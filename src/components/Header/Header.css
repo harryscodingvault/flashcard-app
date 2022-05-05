@@ -17,6 +17,7 @@ header h1{
 }
 
 
+
 header a {
     text-decoration: none;
     color: #fff;
@@ -25,3 +26,9 @@ header a {
 header a:hover {
     color: red;
 }
+
+@media only screen and (max-width: 600px) {
+    header h1{
+      font-size: 1.3rem;
+    }
+  }
